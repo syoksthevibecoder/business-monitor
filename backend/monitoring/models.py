@@ -1,4 +1,7 @@
 from django.db import models
+from django.utils import timezone
+import datetime
+from django.contrib.auth.models import User
 
 
 class Business(models.Model):
@@ -86,3 +89,16 @@ class Visit(models.Model):
     def __str__(self):
         state = "open" if self.is_open else f"{self.duration_seconds}s"
         return f"Visit {self.subject_id} ({state})"
+class UserProfile(models.Model):
+    """Extended user profile to associate users with businesses.Profile to hold OTP for each user"""
+
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    otp = models.CharField(max_length=6, blank=True, null=True)
+    otp_created_at = models.DateTimeField(blank=True, null=True)
+
+    def is_otp_valid(self):
+        """Check if the OTP is still valid (e.g., within 5 minutes)."""
+        if self.otp_created_at:
+            now = timezone.now()
+            return now - self.otp_created_at <= datetime.timedelta(minutes=5)
+        return False

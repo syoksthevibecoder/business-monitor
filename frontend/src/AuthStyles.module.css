@@ -1,0 +1,129 @@
+.auth-page-wrapper {
+    --brand-brown: #4a3728;        /* Deep espresso brown for headers/primary buttons */
+  --brand-brown-hover: #36281d;  /* Darker shade for interactions */
+  --brand-tan: #b8977e;          /* Muted accent tan */
+  --bg-cream: #fbf9f6;           /* Soft warm cream background (much better than harsh white) */
+  --card-bg: #ffffff;
+  --text-main: #2b221a;          /* Soft dark brown instead of harsh jet black */
+  --text-muted: #6e6259;
+  --border-color: #e6dfd9;
+  --border-radius: 12px;
+
+    background-color: var(--bg-cream);
+    color: var(--text-main);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+}
+
+/* Styles for the authentication container */
+.auth-container {
+  background-color: var(--card-bg);
+  padding: 40px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  max-width: 400px; 
+  text-align: center;
+}
+
+.auth-container h2 {
+  margin-bottom: 24px;
+  font-size: 24px;
+}
+.auth-container p {
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: var(--text-muted);
+
+}
+
+.error-text {
+  color: #b91c1c;
+  background-color: #fee2e2;
+  padding: 10px;
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  margin-bottom: 16px;
+}
+
+/*Replace Global 'form' with a specific class*/
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+/*Replave Global 'input' with a specific class*/
+.auth-input {
+  padding: 12px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  width: 100%;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.auth-input:focus {
+  border-color: var(--brand-tan);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2); 
+}
+
+/*Replace Global 'button' with a specific class*/
+.btn-primary, .btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 14px 28px;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: background-color 0.2s;
+  transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+ background-color: var(--brand-brown);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(74, 55, 40, 0.15);
+}
+
+.btn-primary:hover {
+  background-color: var(--brand-brown-hover) !important; /* Forces the deep brown background */
+  color: #ffffff !important;                             /* Forces the text to stay white */
+  transform: translateY(-1px);
+  opacity: 1 !important;                                 /* Prevents any global hidden/opacity bugs */
+}
+
+.btn-secondary:hover {
+  background-color: rgba(74, 55, 40, 0.08) !important;   /* Soft dark brown tint */
+  color: var(--brand-brown) !important;                  /* Forces text to stay brown */
+  transform: translateY(-1px);
+  opacity: 1 !important;
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--brand-brown);
+  border: 2px solid var(--brand-brown);
+}
+
+
+.cta-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.cta-buttons > * {
+  width: auto;
+  padding: 12px 24px;
+}

@@ -5,6 +5,7 @@ import VisitsByHourChart from "./components/VisitsByHourChart";
 import AvgDurationByStationChart from "./components/AvgDurationByStationChart";
 import VisitsTable from "./components/VisitsTable";
 
+
 // Which business this dashboard shows. Matches the test business you created
 // in the Django shell. Later this can become a dropdown of the owner's businesses.
 const BUSINESS_ID = "barber_005";
@@ -40,9 +41,12 @@ function App() {
 
   // Load once on mount, then poll every REFRESH_MS. Clean up on unmount.
   useEffect(() => {
-    load();
+    const initialLoadTimer = setTimeout(load, 0);
     const timer = setInterval(load, REFRESH_MS);
-    return () => clearInterval(timer);
+    return () => {
+      clearTimeout(initialLoadTimer);
+      clearInterval(timer);
+    };
   }, [load]);
 
   return (
